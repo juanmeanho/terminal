@@ -2,22 +2,24 @@
   <v-layout row wrap class="mt-4" >
     <v-flex xs10 offset-xs1 elevation-18>
       <v-card >
-        <v-img
-          class="white--text"
-          height="300px"
-          src="http://www.ifriedegg.com/Images%20third/FusHMain.jpg">
-          <v-container fill-height fluid>
-            <v-layout fill-height>
-              <v-flex xs12 align-end flexbox>
-                <span class="headline">Servicio Disponible</span>
-              </v-flex>
-            </v-layout>
-          </v-container>
-        </v-img>
+        <div align="center">
+          <v-img
+            class="white--text"
+            height="250px"
+            src="https://images.locanto.com.co/3256433596/Vendo-carro-USADO-ECONOMICO-Fiat-Paliot-mod-97-Ahorrador_2.jpg">
+            <v-container fill-height fluid>
+              <v-layout fill-height>
+                <v-flex xs12 align-end flexbox>
+                  <!--<span class="headline">Servicio Disponible</span>-->
+                </v-flex>
+              </v-layout>
+            </v-container>
+          </v-img>
+        </div>
 
         <v-container>
           <v-layout row wrap>
-            <v-flex xs12 sm12 md6 lg6>
+            <v-flex xs12 sm12 md6 lg6 class="mt-2">
               <v-list >
                 <template v-for="(item, index) in items">
                   <v-subheader
@@ -51,7 +53,7 @@
               </v-list>
             </v-flex>
           
-            <v-flex xs12 sm12 md6 lg6>
+            <v-flex xs12 sm12 md6 lg6 >
               <v-container>
                 <v-layout row>
                   <v-flex elevation-15>
@@ -61,65 +63,65 @@
                         <v-flex>
                           <v-card-title primary-title>
                             <div>
-                              <div class="headline">Michael Schumacher</div>
-                              <div>Ford Festiva 2011</div>
+                              <div class="headline" style="font-weight:700">Michael Schumacher</div>
+                              <div style="font-weight:700">Ford Festiva 2011<v-icon>time_to_leave</v-icon></div>
                             </div>
                           </v-card-title>
                           <v-card-text>
                             <v-chip small color="teal darken-5" text-color="white">
-                              <v-avatar class="teal lighten-2"><h3>6</h3></v-avatar>
+                              <v-avatar><h3>6</h3></v-avatar>
                                  Viajes Completados
                             </v-chip>
                             <br>
+                            <v-chip  small color="blue darken-2" text-color="white">
+                              <v-avatar><v-icon>ac_unit</v-icon></v-avatar>
+                                 Aire Acondiconado
+                            </v-chip>
+                            <br>
                             <v-chip small color="teal darken-5" text-color="white">
-                              <v-avatar class="teal lighten-2"><h3>6</h3></v-avatar>
-                                 Viajes Completados
+                              <v-avatar><h3>4</h3></v-avatar>
+                                 Puertas
+                            </v-chip>
+                            <br>
+                            <v-chip  small color="blue darken-2" text-color="white">
+                              <v-avatar><v-icon>card_travel</v-icon></v-avatar>
+                                 Maletero
                             </v-chip>
                           </v-card-text>
                         </v-flex>
-                        <v-flex xs5 class="mt-1">
+                        <v-flex only-xs12 class="mt-4">
                           <v-img
                             src="https://i0.1616.ro/media/2/2701/33647/17592310/1/mark-wahlberg.jpg?width=860"
                             height="125px"
                             contain
                           ></v-img>
+                          <v-container>
+                            <v-layout row wrap>
+                              <v-flex xs12 md12  class="text-xs-center">
+                                <v-icon>star</v-icon>
+                                <v-icon>star</v-icon>
+                                <v-icon>star</v-icon>
+                                <v-icon>star</v-icon>
+                                <v-icon>star</v-icon>
+                                <v-divider></v-divider>
+                                <v-btn class="mt-2">Perfil</v-btn>
+                              </v-flex>
+                            </v-layout>
+                          </v-container>
                         </v-flex>
                       </v-layout>
                       <v-divider light></v-divider>
-                      <v-card-actions class="pa-3">
-                        <v-btn>Perfil</v-btn>
-                        <v-spacer></v-spacer>
-                        <v-icon>star</v-icon>
-                        <v-icon>star</v-icon>
-                        <v-icon>star</v-icon>
-                        <v-icon>star</v-icon>
-                        <v-icon>star</v-icon>
-                      </v-card-actions>
                     </v-card>
                   </v-flex>
                 </v-layout>
               </v-container>
-
             </v-flex>
           </v-layout>
         </v-container>
-
         <v-divider></v-divider>
         <v-card-actions>
-          <v-btn flat color="orange">Viajar</v-btn>
-          <v-btn flat color="orange">Ver mas...</v-btn>
-          <v-spacer></v-spacer>
-          <v-btn icon @click="show = !show">
-            <v-icon>{{ show ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}</v-icon>
-          </v-btn>
+          <v-btn block color="success">Reserva tu puesto</v-btn>
         </v-card-actions>
-
-        <v-slide-y-transition>
-          <v-card-text v-show="show">
-            Comentarios <br>
-            I'm a thing. But, like most politicians, he promised more than he could deliver. You won't have time for sleeping, soldier, not with all the bed making you'll be doing. Then we'll go with that data file! Hey, you add a one and two zeros to that or we walk! You're going to do his laundry? I've got to find a way to escape.
-          </v-card-text>
-        </v-slide-y-transition>
       </v-card>
     </v-flex>
   </v-layout>
@@ -131,7 +133,7 @@
   export default {
     data () {
       return {
-        show: false,
+
         items: [          {
             icon: 'time_to_leave',
             title: 'Miami - Orlando',

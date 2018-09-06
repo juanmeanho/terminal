@@ -1,6 +1,6 @@
 <template>
   <v-app light>
-    <app-toolbar></app-toolbar>
+    <app-toolbar class="mb-5"></app-toolbar>
       <main>
         <router-view></router-view>  
       </main>
