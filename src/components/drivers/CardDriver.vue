@@ -1,6 +1,6 @@
 <template>
   <v-layout>
-    <v-flex xs12 sm8 offset-sm2 class="mt-4">
+    <v-flex xs10 sm10 lg8 offset-sm1 offset-xs1 offset-lg2  class="mt-3">
       <v-card>
         <v-img
           class="white--text"
@@ -31,7 +31,7 @@
                     <v-badge overlap color="pink darken-1">
                       <span slot="badge">3</span>
                     <v-avatar>
-                      <v-icon>event_seat</v-icon>
+                      <v-icon>airline_seat_recline_normal</v-icon>
                     </v-avatar>
                     </v-badge>
                       <h3> Asientos</h3>
@@ -96,46 +96,203 @@
                 <v-divider></v-divider>
                 <v-card-text>                    
                   <!--/-->
-                  
                     <v-layout>
-                      <v-flex elevation-6 lg6 class="mr-1">
-                        <v-card flat style="border-radius:50px;">
-                          
-                          <v-card-title>
-                            <div>
-                              <span class="grey--text">Detalles del Conductor</span><br>
-                              <v-divider></v-divider>
-                              <span>Vehículo: Ford Fiesta 2011</span><br>
-                              <span>Viajes Realizados: 7</span><br>
-                              <span>Comentarios: 25</span>
-                            </div>
-                          </v-card-title>
-                          <v-card-actions>
-                            <v-btn flat color="orange">Ver Comentarios</v-btn>                          </v-card-actions>
-                        </v-card>
+                      <v-flex elevation-6 lg6 md6 sm6 class="mr-1">
+                              <v-toolbar height="40%" color="blue" dark>
+                                 <v-icon>description</v-icon>
+                                <v-toolbar-title>Datos del Conductor</v-toolbar-title>
+                                <v-spacer></v-spacer>
+                              </v-toolbar>
+
+                              <v-list>
+                                <template >
+                                  <v-divider></v-divider>
+
+                                  <v-list-tile>
+                                    <v-list-tile-avatar>
+                                      <v-btn small fab dark color="indigo">
+                                        <v-icon  dark>perm_identity</v-icon>
+                                      </v-btn>
+                                    </v-list-tile-avatar>
+
+                                    <v-list-tile-content>
+                                      <v-list-tile-title >Juan Meaño</v-list-tile-title>
+                                      <v-list-tile-sub-title >Conductor</v-list-tile-sub-title>
+                                    </v-list-tile-content>
+                                  </v-list-tile>
+                                  <v-divider></v-divider>
+
+                                  <v-list-tile>
+                                    <v-list-tile-avatar>
+                                      <v-btn small fab dark color="indigo">
+                                        <v-icon small dark>time_to_leave</v-icon>
+                                      </v-btn>
+                                    </v-list-tile-avatar>
+
+                                    <v-list-tile-content>
+                                      <v-list-tile-title >Ford Aveo 2010 4 Puertas </v-list-tile-title>
+                                      <v-list-tile-sub-title >Vehículo</v-list-tile-sub-title>
+                                    </v-list-tile-content>
+                                  </v-list-tile>
+                                     <v-divider></v-divider>
+
+                                  <v-list-tile>
+                                    <v-list-tile-avatar>
+                                      <v-btn small fab dark color="indigo">
+                                        <v-icon small dark>navigation</v-icon>
+                                      </v-btn>
+                                    </v-list-tile-avatar>
+
+                                    <v-list-tile-content>
+                                      <v-list-tile-title >23</v-list-tile-title>
+                                      <v-list-tile-sub-title >Servicios Completados</v-list-tile-sub-title>
+                                    </v-list-tile-content>
+                                  </v-list-tile>
+                                  <v-divider></v-divider>
+
+
+                                  <v-list-tile>
+                                    <v-list-tile-avatar>
+                                      <v-btn small fab dark color="indigo">
+                                        <v-icon small dark>chat_bubble</v-icon>
+                                      </v-btn>
+                                    </v-list-tile-avatar>
+
+                                    <v-list-tile-content>
+                                      <v-list-tile-title >25</v-list-tile-title>
+                                      <v-list-tile-sub-title >Comentarios</v-list-tile-sub-title>
+                                    </v-list-tile-content>
+                                  </v-list-tile>
+                                   <v-divider></v-divider>
+
+                                    <div class="text-xs-center">
+                                      <v-btn color="success">Ver Perfil</v-btn>
+                                    </div>
+                                  
+                                </template>
+                              </v-list>
                       </v-flex>
 
-                      <v-flex elevation-6 lg6 class="ml-1">
-                        <v-card>
-                          
-                          <v-card-title>
-                            <div>
-                              <span class="grey--text">Detalles del Servicio</span><br>
-                              <v-divider></v-divider>
-                              <span>Ruta: Miami - Orlando</span><br>
-                              <span>Fecha de Salida: Sábado 20/10/2018</span><br>
-                              <span>Hora de Salida: 10:00 am</span><br>
-                              <span>Puestos Disponibles: 3</span><br>                             
-                              <span>Punto de Salida: Terminal/Buscá en Casa</span><br>
-                              <span>Tarifa: 200 BsS</span><br>
-                              <span>Forma de Pago: Transferencia</span>
-                              
-                            </div>
-                          </v-card-title>
-                          <v-card-actions>
-                            <v-btn flat color="orange">Ver Otra Cosa</v-btn>
-                          </v-card-actions>
-                        </v-card>
+                      <v-flex elevation-6 lg6 md6 sm6 class="ml-1">
+                              <v-toolbar height="40%" color="blue" dark>
+                                <v-icon>description</v-icon>
+                          <v-toolbar-title>Datos del Servicio</v-toolbar-title>
+                            <v-spacer></v-spacer>
+                          </v-toolbar>
+
+                          <v-list>
+                                <template >
+                                  <v-divider></v-divider>
+
+                                  <v-list-tile>
+                                    <v-list-tile-avatar>
+                                      <v-btn small fab dark color="indigo">
+                                        <v-icon  dark>place</v-icon>
+                                      </v-btn>
+                                    </v-list-tile-avatar>
+
+                                    <v-list-tile-content>
+                                      <v-list-tile-title >Miami - Orlando</v-list-tile-title>
+                                      <v-list-tile-sub-title >Ruta</v-list-tile-sub-title>
+                                    </v-list-tile-content>
+                                  </v-list-tile>
+                                  <v-divider></v-divider>
+
+                                  <v-list-tile>
+                                    <v-list-tile-avatar>
+                                      <v-btn small fab dark color="indigo">
+                                        <v-icon small dark>date_range</v-icon>
+                                      </v-btn>
+                                    </v-list-tile-avatar>
+
+                                    <v-list-tile-content>
+                                      <v-list-tile-title >Sábado 20/10/1999</v-list-tile-title>
+                                      <v-list-tile-sub-title >Fecha de Salida</v-list-tile-sub-title>
+                                    </v-list-tile-content>
+                                  </v-list-tile>
+                                     <v-divider></v-divider>
+
+                                  <v-list-tile>
+                                    <v-list-tile-avatar>
+                                      <v-btn small fab dark color="indigo">
+                                        <v-icon small dark>access_time</v-icon>
+                                      </v-btn>
+                                    </v-list-tile-avatar>
+
+                                    <v-list-tile-content>
+                                      <v-list-tile-title >10:00 AM</v-list-tile-title>
+                                      <v-list-tile-sub-title >Hora de Salida</v-list-tile-sub-title>
+                                    </v-list-tile-content>
+                                  </v-list-tile>
+                                  <v-divider></v-divider>
+
+
+                                  <v-list-tile>
+                                    <v-list-tile-avatar>
+                                      <v-btn small fab dark color="indigo">
+                                        <v-icon small dark>airline_seat_recline_normal</v-icon>
+                                      </v-btn>
+                                    </v-list-tile-avatar>
+
+                                    <v-list-tile-content>
+                                      <v-list-tile-title >2</v-list-tile-title>
+                                      <v-list-tile-sub-title >Asientos Disponibles</v-list-tile-sub-title>
+                                    </v-list-tile-content>
+                                  </v-list-tile>
+                                   <v-divider></v-divider>
+
+                                  <v-list-tile>
+                                    <v-list-tile-avatar>
+                                      <v-btn small fab dark color="indigo">
+                                        <v-icon small dark>person_add</v-icon>
+                                      </v-btn>
+                                    </v-list-tile-avatar>
+
+                                    <v-list-tile-content>
+                                      <v-list-tile-title >Te  busca/Terminal</v-list-tile-title>
+                                      <v-list-tile-sub-title >Punto de Salida</v-list-tile-sub-title>
+                                    </v-list-tile-content>
+                                  </v-list-tile>
+                                   <v-divider></v-divider>
+
+
+                                  <v-list-tile>
+                                    <v-list-tile-avatar>
+                                      <v-btn small fab dark color="indigo">
+                                        <v-icon small dark>monetization_on</v-icon>
+                                      </v-btn>
+                                    </v-list-tile-avatar>
+
+                                    <v-list-tile-content>
+                                      <v-list-tile-title >2</v-list-tile-title>
+                                      <v-list-tile-sub-title >Tarifa 200 Bss p/p</v-list-tile-sub-title>
+                                    </v-list-tile-content>
+                                  </v-list-tile>
+                                   <v-divider></v-divider>
+
+                                  <v-list-tile>
+                                    <v-list-tile-avatar>
+                                      <v-btn small fab dark color="indigo">
+                                        <v-icon small dark>credit_card</v-icon>
+                                      </v-btn>
+                                    </v-list-tile-avatar>
+
+                                    <v-list-tile-content>
+                                      <v-list-tile-title >Transferencia</v-list-tile-title>
+                                      <v-list-tile-sub-title >Forma de Pago</v-list-tile-sub-title>
+                                    </v-list-tile-content>
+                                  </v-list-tile>
+                                   <v-divider></v-divider>
+
+
+
+                                    <div class="text-xs-center">
+                                      <v-btn color="success">Reservar</v-btn>
+                                    </div>
+                                  
+                                </template>
+                              </v-list>
+
                       </v-flex>
                     </v-layout>
                   <!--/-->
@@ -195,44 +352,201 @@
                   
                     <v-layout>
                       <v-flex elevation-6 lg6 class="mb-2">
-                        <v-card flat style="border-radius:50px;">
-                          
-                          <v-card-title>
-                            <div>
-                              <span class="grey--text">Detalles del Conductor</span><br>
-                              <v-divider></v-divider>
-                              <span>Vehículo: Ford Fiesta 2011</span><br>
-                              <span>Viajes Realizados: 7</span><br>
-                              <span>Comentarios: 25</span>
-                            </div>
-                          </v-card-title>
-                          <v-card-actions>
-                            <v-btn flat color="orange">Ver Comentarios</v-btn>                          </v-card-actions>
-                        </v-card>
+                         <v-toolbar height="40%" color="blue" dark>
+                                 <v-icon>description</v-icon>
+                                <v-toolbar-title>Datos del Conductor</v-toolbar-title>
+                                <v-spacer></v-spacer>
+                              </v-toolbar>
+
+                              <v-list>
+                                <template >
+                                  <v-divider></v-divider>
+
+                                  <v-list-tile>
+                                    <v-list-tile-avatar>
+                                      <v-btn small fab dark color="indigo">
+                                        <v-icon  dark>perm_identity</v-icon>
+                                      </v-btn>
+                                    </v-list-tile-avatar>
+
+                                    <v-list-tile-content>
+                                      <v-list-tile-title >Juan Meaño</v-list-tile-title>
+                                      <v-list-tile-sub-title >Conductor</v-list-tile-sub-title>
+                                    </v-list-tile-content>
+                                  </v-list-tile>
+                                  <v-divider></v-divider>
+
+                                  <v-list-tile>
+                                    <v-list-tile-avatar>
+                                      <v-btn small fab dark color="indigo">
+                                        <v-icon small dark>time_to_leave</v-icon>
+                                      </v-btn>
+                                    </v-list-tile-avatar>
+
+                                    <v-list-tile-content>
+                                      <v-list-tile-title >Ford Aveo 2010 4 Puertas </v-list-tile-title>
+                                      <v-list-tile-sub-title >Vehículo</v-list-tile-sub-title>
+                                    </v-list-tile-content>
+                                  </v-list-tile>
+                                     <v-divider></v-divider>
+
+                                  <v-list-tile>
+                                    <v-list-tile-avatar>
+                                      <v-btn small fab dark color="indigo">
+                                        <v-icon small dark>navigation</v-icon>
+                                      </v-btn>
+                                    </v-list-tile-avatar>
+
+                                    <v-list-tile-content>
+                                      <v-list-tile-title >23</v-list-tile-title>
+                                      <v-list-tile-sub-title >Servicios Completados</v-list-tile-sub-title>
+                                    </v-list-tile-content>
+                                  </v-list-tile>
+                                  <v-divider></v-divider>
+
+
+                                  <v-list-tile>
+                                    <v-list-tile-avatar>
+                                      <v-btn small fab dark color="indigo">
+                                        <v-icon small dark>chat_bubble</v-icon>
+                                      </v-btn>
+                                    </v-list-tile-avatar>
+
+                                    <v-list-tile-content>
+                                      <v-list-tile-title >25</v-list-tile-title>
+                                      <v-list-tile-sub-title >Comentarios</v-list-tile-sub-title>
+                                    </v-list-tile-content>
+                                  </v-list-tile>
+                                   <v-divider></v-divider>
+
+                                    <div class="text-xs-center">
+                                      <v-btn color="success">Ver Perfil</v-btn>
+                                    </div>
+                                  
+                                </template>
+                              </v-list>
                       </v-flex>
                     </v-layout>
                     <v-layout>
                       <v-flex elevation-6 lg6 class="ml-0">
-                        <v-card>
-                          
-                          <v-card-title>
-                            <div>
-                              <span class="grey--text">Detalles del Servicio</span><br>
-                              <v-divider></v-divider>
-                              <span>Ruta: Miami - Orlando</span><br>
-                              <span>Fecha de Salida: Sábado 20/10/2018</span><br>
-                              <span>Hora de Salida: 10:00 am</span><br>
-                              <span>Puestos Disponibles: 3</span><br>                             
-                              <span>Punto de Salida: Terminal/Buscá en Casa</span><br>
-                              <span>Tarifa: 200 BsS</span><br>
-                              <span>Forma de Pago: Transferencia</span>
-                              
-                            </div>
-                          </v-card-title>
-                          <v-card-actions>
-                            <v-btn flat color="orange">Ver Otra Cosa</v-btn>
-                          </v-card-actions>
-                        </v-card>
+                        <v-toolbar height="40%" color="blue" dark>
+                                <v-icon>description</v-icon>
+                          <v-toolbar-title>Datos del Servicio</v-toolbar-title>
+                            <v-spacer></v-spacer>
+                          </v-toolbar>
+
+                          <v-list>
+                                <template >
+                                  <v-divider></v-divider>
+
+                                  <v-list-tile>
+                                    <v-list-tile-avatar>
+                                      <v-btn small fab dark color="indigo">
+                                        <v-icon  dark>place</v-icon>
+                                      </v-btn>
+                                    </v-list-tile-avatar>
+
+                                    <v-list-tile-content>
+                                      <v-list-tile-title >Miami - Orlando</v-list-tile-title>
+                                      <v-list-tile-sub-title >Ruta</v-list-tile-sub-title>
+                                    </v-list-tile-content>
+                                  </v-list-tile>
+                                  <v-divider></v-divider>
+
+                                  <v-list-tile>
+                                    <v-list-tile-avatar>
+                                      <v-btn small fab dark color="indigo">
+                                        <v-icon small dark>date_range</v-icon>
+                                      </v-btn>
+                                    </v-list-tile-avatar>
+
+                                    <v-list-tile-content>
+                                      <v-list-tile-title >Sábado 20/10/1999</v-list-tile-title>
+                                      <v-list-tile-sub-title >Fecha de Salida</v-list-tile-sub-title>
+                                    </v-list-tile-content>
+                                  </v-list-tile>
+                                     <v-divider></v-divider>
+
+                                  <v-list-tile>
+                                    <v-list-tile-avatar>
+                                      <v-btn small fab dark color="indigo">
+                                        <v-icon small dark>access_time</v-icon>
+                                      </v-btn>
+                                    </v-list-tile-avatar>
+
+                                    <v-list-tile-content>
+                                      <v-list-tile-title >10:00 AM</v-list-tile-title>
+                                      <v-list-tile-sub-title >Hora de Salida</v-list-tile-sub-title>
+                                    </v-list-tile-content>
+                                  </v-list-tile>
+                                  <v-divider></v-divider>
+
+
+                                  <v-list-tile>
+                                    <v-list-tile-avatar>
+                                      <v-btn small fab dark color="indigo">
+                                        <v-icon small dark>airline_seat_recline_normal</v-icon>
+                                      </v-btn>
+                                    </v-list-tile-avatar>
+
+                                    <v-list-tile-content>
+                                      <v-list-tile-title >2</v-list-tile-title>
+                                      <v-list-tile-sub-title >Asientos Disponibles</v-list-tile-sub-title>
+                                    </v-list-tile-content>
+                                  </v-list-tile>
+                                   <v-divider></v-divider>
+
+                                  <v-list-tile>
+                                    <v-list-tile-avatar>
+                                      <v-btn small fab dark color="indigo">
+                                        <v-icon small dark>person_add</v-icon>
+                                      </v-btn>
+                                    </v-list-tile-avatar>
+
+                                    <v-list-tile-content>
+                                      <v-list-tile-title >Te  busca/Terminal</v-list-tile-title>
+                                      <v-list-tile-sub-title >Punto de Salida</v-list-tile-sub-title>
+                                    </v-list-tile-content>
+                                  </v-list-tile>
+                                   <v-divider></v-divider>
+
+
+                                  <v-list-tile>
+                                    <v-list-tile-avatar>
+                                      <v-btn small fab dark color="indigo">
+                                        <v-icon small dark>monetization_on</v-icon>
+                                      </v-btn>
+                                    </v-list-tile-avatar>
+
+                                    <v-list-tile-content>
+                                      <v-list-tile-title >2</v-list-tile-title>
+                                      <v-list-tile-sub-title >Tarifa 200 Bss p/p</v-list-tile-sub-title>
+                                    </v-list-tile-content>
+                                  </v-list-tile>
+                                   <v-divider></v-divider>
+
+                                  <v-list-tile>
+                                    <v-list-tile-avatar>
+                                      <v-btn small fab dark color="indigo">
+                                        <v-icon small dark>credit_card</v-icon>
+                                      </v-btn>
+                                    </v-list-tile-avatar>
+
+                                    <v-list-tile-content>
+                                      <v-list-tile-title >Transferencia</v-list-tile-title>
+                                      <v-list-tile-sub-title >Forma de Pago</v-list-tile-sub-title>
+                                    </v-list-tile-content>
+                                  </v-list-tile>
+                                   <v-divider></v-divider>
+
+
+
+                                    <div class="text-xs-center">
+                                      <v-btn color="success">Reservar</v-btn>
+                                    </div>
+                                  
+                                </template>
+                              </v-list>
                       </v-flex>
                     </v-layout>
                   <!--/-->
