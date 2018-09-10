@@ -2,20 +2,26 @@
 <v-container>
   <v-layout>
     <v-flex xs10 sm10 lg8 offset-sm1 offset-xs1 offset-lg2 >
-      <v-card elevation-10 class="mb-3" v-for="(item, index) in datosConductorServicio" :key="index" > 
+      <!-- VCard Principal-->
+      <v-card hover elevation-10 class="mb-3" v-for="(item, index) in datosConductorServicio" :key="index" > 
         <v-img
           class="white--text"
           height="230px"
           :src="item.imageUrl">
             <v-layout align-center justify-end row fill-height>
               <v-flex xs12>
-                <v-card style="background-color:rgba(0,0,0,0.35)" class="pt-1 mr-2 pl-1 ml-2">
-                  <v-chip label color="pink darken-1" text-color="white" style="font-weight:700">
-                    <v-avatar>
-                      <v-icon>time_to_leave</v-icon>
-                    </v-avatar>
-                      <h3>{{item.origen }} - {{item.destino}}</h3>
-                  </v-chip><br>
+                <!-- Vcard Transparente-->
+                <v-card  style="background-color:rgba(0,0,0,0.35)" class="pt-1 mr-2 pl-1 ml-2">
+                  <v-layout>
+                    <v-chip label color="pink darken-1" text-color="white" style="font-weight:700">
+                      <v-avatar>
+                        <v-icon>time_to_leave</v-icon>
+                      </v-avatar>
+                        <h3>{{item.origen }} - {{item.destino}}</h3>
+                    </v-chip>
+                    <v-spacer></v-spacer>
+                    <v-btn color="gray" @click="eliminarCard(index)"  icon><v-icon elevation-10>close</v-icon></v-btn>
+                  </v-layout>
                   <v-chip label color="indigo" text-color="white">
                     <v-avatar>
                       <v-icon>date_range</v-icon>
@@ -44,11 +50,13 @@
                       <h3>{{item.tarifa}} BsS</h3>
                   </v-chip>
                 </v-card>
+                <!-- /Vcard Transparente-->
               </v-flex>
             </v-layout>
         </v-img>
         <!--/-->
         <v-layout column  justify-center class="hidden-xs-only">
+          <!-- VExpansionPanel -->
           <v-expansion-panel popout>
             <v-expansion-panel-content >
               <v-layout slot="header" align-center row spacer>
@@ -84,7 +92,6 @@
                   </v-chip>
                   </div>
                 </v-flex>
-      
                 <v-flex md5 class="hidden-sm-and-down">
                   <div class="text-xs-center">
                   <strong >&mdash;
@@ -93,7 +100,7 @@
                   </div>
                 </v-flex>
               </v-layout>
-      
+              <!-- VCard Datos de Conductor y servicio (ExpansionPanel) LG Devices -->
               <v-card>
                 <v-divider></v-divider>
                 <v-card-text>                    
@@ -105,7 +112,7 @@
                                 <v-toolbar-title>Datos del Conductor</v-toolbar-title>
                                 <v-spacer></v-spacer>
                               </v-toolbar>
-
+                              <!-- VList Conductor (Expansion Panel) -->
                               <v-list>
                                 <template >
                                   <v-divider></v-divider>
@@ -151,7 +158,6 @@
                                     </v-list-tile-content>
                                   </v-list-tile>
                                   <v-divider></v-divider>
-
 
                                   <v-list-tile>
                                     <v-list-tile-avatar>
@@ -207,22 +213,20 @@
                                     </v-list-tile-content>
                                   </v-list-tile>
                                    <v-divider></v-divider>
-
                                     <div class="text-xs-center">
                                       <v-btn color="success">Ver Perfil</v-btn>
                                     </div>
-                                  
                                 </template>
                               </v-list>
+                              <!-- /VList Conductor (Expansion Panel) -->
                       </v-flex>
-
                       <v-flex elevation-6 lg6 md6 sm6 class="ml-1">
                               <v-toolbar height="40%" color="blue" dark>
                                 <v-icon>description</v-icon>
                           <v-toolbar-title>Datos del Servicio</v-toolbar-title>
                             <v-spacer></v-spacer>
                           </v-toolbar>
-
+                              <!-- VList Servicio (Expansion Panel) -->
                           <v-list>
                                 <template >
                                   <v-divider></v-divider>
@@ -326,28 +330,28 @@
                                     </v-list-tile-content>
                                   </v-list-tile>
                                    <v-divider></v-divider>
-
-
-
                                     <div class="text-xs-center">
                                       <v-btn color="success" >Reservar</v-btn>
                                     </div>
                                   
                                 </template>
                               </v-list>
-
+                              <!-- /VList Servicio (Expansion Panel) -->
                       </v-flex>
                     </v-layout>
                   <!--/-->
                 </v-card-text>
               </v-card>
+              <!-- VCard Datos de Conductor y servicio (ExpansionPanel) LG Devices -->
             </v-expansion-panel-content>
           </v-expansion-panel>
+          <!-- /VExpansionPanel -->
         </v-layout>
         <!--/-->
         <v-container class="hidden-sm-and-up">
           <v-layout >
               <v-flex>
+                <!-- VCard Preview Datos Conductor SM Devices-->
                 <v-card>
                   <v-flex class="text-xs-center">
                     <v-avatar slot="activator" size="52px">
@@ -356,7 +360,6 @@
                           alt="Avatar">
                     </v-avatar>
                   </v-flex>
-
                   <v-flex>
                     <div class="text-xs-center">
                       <strong>{{item.nombreConductor}}</strong>
@@ -366,7 +369,6 @@
                     </div>
                   </v-flex>
                   <v-divider></v-divider>
-
                 <v-flex>
                   <div class="text-xs-center mt-1" >
                     <strong >{{item.modeloVehiculo}} {{item.marcaVehiculo}} {{item.anioVehiculo}}</strong><br>
@@ -392,8 +394,6 @@
                 </v-card-actions>
                 <v-slide-y-transition>
                   <v-card-text v-show="show">
-                    <!--/-->
-                  
                     <v-layout>
                       <v-flex elevation-6 lg6 class="mb-2">
                          <v-toolbar height="40%" color="blue" dark>
@@ -401,7 +401,7 @@
                                 <v-toolbar-title>Datos del Conductor</v-toolbar-title>
                                 <v-spacer></v-spacer>
                               </v-toolbar>
-
+                              <!-- VList Detalles Conductor en Vcard Sm Devices-->
                               <v-list>
                                 <template >
                                   <v-divider></v-divider>
@@ -448,7 +448,6 @@
                                   </v-list-tile>
                                   <v-divider></v-divider>
 
-
                                   <v-list-tile>
                                     <v-list-tile-avatar>
                                       <v-btn small fab dark color="indigo">
@@ -465,10 +464,10 @@
 
                                     <div class="text-xs-center">
                                       <v-btn color="success">Ver Perfill</v-btn>
-                                    </div>
-                                  
+                                    </div>      
                                 </template>
                               </v-list>
+                              <!-- /VList Detalles Conductor en Vcard Sm Devices-->
                       </v-flex>
                     </v-layout>
                     <v-layout>
@@ -478,7 +477,7 @@
                           <v-toolbar-title>Datos del Servicio</v-toolbar-title>
                             <v-spacer></v-spacer>
                           </v-toolbar>
-
+                          <!-- VList Detalles Servicio en Vcard Sm Devices-->
                           <v-list>
                                 <template >
                                   <v-divider></v-divider>
@@ -525,7 +524,6 @@
                                   </v-list-tile>
                                   <v-divider></v-divider>
 
-
                                   <v-list-tile>
                                     <v-list-tile-avatar>
                                       <v-btn small fab dark color="indigo">
@@ -553,7 +551,6 @@
                                     </v-list-tile-content>
                                   </v-list-tile>
                                    <v-divider></v-divider>
-
 
                                   <v-list-tile>
                                     <v-list-tile-avatar>
@@ -589,14 +586,14 @@
                                   
                                 </template>
                               </v-list>
+                              <!-- /VList Detalles Conductor en Vcard Sm Devices-->
                       </v-flex>
                     </v-layout>
-                  <!--/-->
                   </v-card-text>
                 </v-slide-y-transition>
               </v-card>
+              <!-- /VCard Preview Datos Conductor SM Devices-->
             </v-flex>
-            
           </v-layout>
         </v-container>
         <!--/-->  
@@ -604,6 +601,7 @@
           <v-btn block color="success">Reserva tu Asiento</v-btn>
         </v-card-actions>
       </v-card>
+      <!-- /VCard Principal-->
     </v-flex>
   </v-layout>
 </v-container>
@@ -611,68 +609,75 @@
 
 <script>
   export default {
-    data: () => ({
-      show: false,
-      datosConductorServicio: [
-        { imageUrl: "https://img.clasf.co.ve/2017/02/13/Ford-Fiesta-Move-20170213085925.jpg",
-          origen: 'Miami',
-          destino: 'Bóston',
-          fechaSalida: '22/10/2018',
-          horaSalida: '10:00 am',
-          asientosDisponibles: 3,
-          tarifa: 200,
-          ptoSalida: 'A domicilio',
-          formaDePago: 'Transferencia',
-          avatarConductor: 'https://avatars0.githubusercontent.com/u/9064066?v=4&s=460',
-          nombreConductor: 'Joao Gonzales',
-          modeloVehiculo: 'Elantra',
-          marcaVehiculo: 'Hyundai',
-          anioVehiculo: '2006',
-          numPuertas: 4,
-          aireAcondicionado: true,
-          stars: 4,
-          numComentarios: 20,
-          serviciosRealizados: 26 },
-        { imageUrl: "https://http2.mlstatic.com/ford-grand-marquis-D_NQ_NP_768989-MLV26432156577_112017-F.jpg",
-          origen: 'Seatle',
-          destino: 'Misissipi',
-          fechaSalida: '02/09/2018',
-          horaSalida: '3:00 pm',
-          asientosDisponibles: 1,
-          tarifa: 150,
-          ptoSalida: 'Terminal de Oriente',
-          formaDePago: 'Transferencia',
-          avatarConductor: 'http://www.upsocl.com/wp-content/uploads/immujer/2015/01/iStock_000055230302_Large.jpg',
-          nombreConductor: 'Quentin Tarantino',
-          modeloVehiculo: 'Yaris',
-          marcaVehiculo: 'Toyota',
-          anioVehiculo: '2012',
-          numPuertas: 4,
-          aireAcondicionado: false,
-          stars: 3,
-          numComentarios: 2,
-          serviciosRealizados: 5 },
-        { imageUrl: "https://i.ytimg.com/vi/U2GjdLlvkj8/maxresdefault.jpg",
-          origen: 'Los Angeles',
-          destino: 'Caripito',
-          fechaSalida: '31/12/2018',
-          horaSalida: '12:00 am',
-          asientosDisponibles: 4,
-          tarifa: 80,
-          ptoSalida: 'A domicilio',
-          formaDePago: 'Transferencia',
-          avatarConductor: 'http://www.lapi.com.mx/image.ashx?s=57067&sl=es&im=83276&st=p',
-          nombreConductor: 'Carlos Malave',
-          modeloVehiculo: 'Accent',
-          marcaVehiculo: 'Hyundai',
-          anioVehiculo: '1996',
-          numPuertas: 4,
-          aireAcondicionado: true,
-          stars: 1,
-          numComentarios: 0,
-          serviciosRealizados: 1 },
-      ]
-    })
+    data() {
+      return {
+        show: false,
+        datosConductorServicio: [
+          { imageUrl: "https://img.clasf.co.ve/2017/02/13/Ford-Fiesta-Move-20170213085925.jpg",
+            origen: 'Miami',
+            destino: 'Bóston',
+            fechaSalida: '22/10/2018',
+            horaSalida: '10:00 am',
+            asientosDisponibles: 3,
+            tarifa: 200,
+            ptoSalida: 'A domicilio',
+            formaDePago: 'Transferencia',
+            avatarConductor: 'https://avatars0.githubusercontent.com/u/9064066?v=4&s=460',
+            nombreConductor: 'Joao Gonzales',
+            modeloVehiculo: 'Elantra',
+            marcaVehiculo: 'Hyundai',
+            anioVehiculo: '2006',
+            numPuertas: 4,
+            aireAcondicionado: true,
+            stars: 4,
+            numComentarios: 20,
+            serviciosRealizados: 26 },
+          { imageUrl: "https://http2.mlstatic.com/ford-grand-marquis-D_NQ_NP_768989-MLV26432156577_112017-F.jpg",
+            origen: 'Seatle',
+            destino: 'Misissipi',
+            fechaSalida: '02/09/2018',
+            horaSalida: '3:00 pm',
+            asientosDisponibles: 1,
+            tarifa: 150,
+            ptoSalida: 'Terminal de Oriente',
+            formaDePago: 'Transferencia',
+            avatarConductor: 'http://www.upsocl.com/wp-content/uploads/immujer/2015/01/iStock_000055230302_Large.jpg',
+            nombreConductor: 'Quentin Tarantino',
+            modeloVehiculo: 'Yaris',
+            marcaVehiculo: 'Toyota',
+            anioVehiculo: '2012',
+            numPuertas: 4,
+            aireAcondicionado: false,
+            stars: 3,
+            numComentarios: 2,
+            serviciosRealizados: 5 },
+          { imageUrl: "https://i.ytimg.com/vi/U2GjdLlvkj8/maxresdefault.jpg",
+            origen: 'Los Angeles',
+            destino: 'Caripito',
+            fechaSalida: '31/12/2018',
+            horaSalida: '12:00 am',
+            asientosDisponibles: 4,
+            tarifa: 80,
+            ptoSalida: 'A domicilio',
+            formaDePago: 'Transferencia',
+            avatarConductor: 'http://www.lapi.com.mx/image.ashx?s=57067&sl=es&im=83276&st=p',
+            nombreConductor: 'Carlos Malave',
+            modeloVehiculo: 'Accent',
+            marcaVehiculo: 'Hyundai',
+            anioVehiculo: '1996',
+            numPuertas: 4,
+            aireAcondicionado: true,
+            stars: 1,
+            numComentarios: 0,
+            serviciosRealizados: 1 },
+        ]
+      }
+    },
+    methods:{
+      eliminarCard(index){
+        this.$delete(this.datosConductorServicio, index)
+      }
+    }
   };
 </script>
 

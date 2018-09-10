@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- VnavigationDrawer -->
     <v-navigation-drawer fixed
          temporary v-model="sideNav">
        <v-list>
@@ -21,7 +22,8 @@
         </v-list-tile>
        </v-list> 
     </v-navigation-drawer>
-
+    <!-- /VnavigationDrawer -->
+    <!-- VToolbar Principal -->
     <v-toolbar height="50%" dark color="blue darken-1" fixed >
       <v-toolbar-side-icon 
       @click.stop="sideNav = !sideNav"
@@ -78,10 +80,9 @@
           Ingresa
         </v-btn>
       </v-toolbar-items>
-
     </v-toolbar>
-
-          <!-- Busqueda en Sm devices -->
+    <!-- VToolbar Principal -->
+    <!-- Mini ToolBar para cuadros de busqueda en Sm devices -->
       <v-toolbar  color="transparent" height="180%" class="hidden-md-and-up" card prominent >
           <v-card width="100%" class="mt-5 hidden-md-and-up" dark color="blue darken-1" >
               <v-layout class="mb-1" >
@@ -122,7 +123,8 @@
               </v-layout>
           </v-card>
           </v-toolbar>
-    
+        <!-- /Mini ToolBar para cuadros de busqueda en Sm devices -->
+
     
   </div>
 </template>
