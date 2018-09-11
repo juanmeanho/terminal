@@ -71,14 +71,42 @@
       </template>
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-xs-only">
-        <v-btn flat>
-          <v-icon left>face</v-icon>
-          Registrate
-        </v-btn>
-        <v-btn flat>
-          <v-icon left>lock_open</v-icon>
+        <v-menu offset-y open-on-hover>
+          <v-btn flat slot="activator">
+            <v-icon left>perm_identity</v-icon> Registrate
+          </v-btn>
+          <v-list > 
+            <v-list-tile @click="">
+              <v-btn icon to="/registerDriver"><v-icon>directions_walk</v-icon></v-btn>
+            <v-list-tile-title>Como Pasajero</v-list-tile-title>
+          </v-list-tile>
+        </v-list>
+        <v-list>
+            <v-list-tile @click="">
+              <v-btn icon><v-icon>drive_eta</v-icon></v-btn>
+            <v-list-tile-title>Como Conductor</v-list-tile-title>
+          </v-list-tile>
+        </v-list>
+      </v-menu>
+      <v-menu offset-y open-on-hover>
+        <v-btn flat slot="activator">
+          <v-icon left>how_to_reg</v-icon>
           Ingresa
         </v-btn>
+        <v-list > 
+            <v-list-tile @click="">
+              <v-btn icon><v-icon>directions_walk</v-icon></v-btn>
+            <v-list-tile-title>Como Pasajero</v-list-tile-title>
+          </v-list-tile>
+        </v-list>
+        <v-list>
+            <v-list-tile @click="">
+              <v-btn icon><v-icon>drive_eta</v-icon></v-btn>
+            <v-list-tile-title>Como Conductor</v-list-tile-title>
+          </v-list-tile>
+        </v-list>
+      </v-menu>
+        
       </v-toolbar-items>
     </v-toolbar>
     <!-- VToolbar Principal -->
