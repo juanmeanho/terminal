@@ -25,7 +25,7 @@
     <!-- /VnavigationDrawer -->
     <!-- VToolbar Principal -->
     <v-toolbar height="50%" dark color="blue darken-1" fixed >
-      <v-toolbar-side-icon 
+      <v-toolbar-side-icon class="hidden-sm-and-up"
       @click.stop="sideNav = !sideNav"
       >
      </v-toolbar-side-icon>
@@ -76,13 +76,13 @@
             <v-icon left>perm_identity</v-icon> Registrate
           </v-btn>
           <v-list > 
-            <v-list-tile @click="">
-              <v-btn icon to="/registerDriver"><v-icon>directions_walk</v-icon></v-btn>
-            <v-list-tile-title>Como Pasajero</v-list-tile-title>
+            <v-list-tile @click="algo()" to="/registroUsuario">
+              <v-btn icon ><v-icon >directions_walk</v-icon></v-btn>
+            <v-list-tile-title>Como Usuario</v-list-tile-title>
           </v-list-tile>
         </v-list>
         <v-list>
-            <v-list-tile @click="">
+            <v-list-tile @click="algo()" to="/registroConductor">
               <v-btn icon><v-icon>drive_eta</v-icon></v-btn>
             <v-list-tile-title>Como Conductor</v-list-tile-title>
           </v-list-tile>
@@ -94,13 +94,13 @@
           Ingresa
         </v-btn>
         <v-list > 
-            <v-list-tile @click="">
+            <v-list-tile @click="algo()" to="/inicioUsuario">
               <v-btn icon><v-icon>directions_walk</v-icon></v-btn>
-            <v-list-tile-title>Como Pasajero</v-list-tile-title>
+            <v-list-tile-title>Como Usuario</v-list-tile-title>
           </v-list-tile>
         </v-list>
         <v-list>
-            <v-list-tile @click="">
+            <v-list-tile @click="algo()" to="/inicioConductor">
               <v-btn icon><v-icon>drive_eta</v-icon></v-btn>
             <v-list-tile-title>Como Conductor</v-list-tile-title>
           </v-list-tile>
@@ -152,8 +152,6 @@
           </v-card>
           </v-toolbar>
         <!-- /Mini ToolBar para cuadros de busqueda en Sm devices -->
-
-    
   </div>
 </template>
 

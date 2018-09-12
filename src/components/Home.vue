@@ -1,4 +1,4 @@
 <template>
-  <card-driver></card-driver>
+  <card-servicio></card-servicio>
 </template>
 

@@ -5,14 +5,14 @@ import App from './App.vue'
 import router from './router'
 import AppToolbar from './components/uiElements/Toolbar.vue'
 import AppFooter from './components/uiElements/Footer.vue'
-import CardDriver from './components/drivers/CardDriver.vue'
+import CardServicio from './components/servicio/CardServicio.vue'
 
 
 Vue.config.productionTip = false
 
 Vue.component('app-toolbar', AppToolbar)
 Vue.component('app-footer', AppFooter)
-Vue.component('card-driver', CardDriver)
+Vue.component('card-servicio', CardServicio)
 
 
 new Vue({

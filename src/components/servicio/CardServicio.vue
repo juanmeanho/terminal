@@ -3,7 +3,7 @@
   <v-layout>
     <v-flex xs12 sm10 lg8 offset-sm1 offset-lg2 >
       <!-- VCard Principal-->
-      <v-card v-show="false" hover elevation-10 class="mb-3" v-for="(item, index) in datosConductorServicio" :key="index" > 
+      <v-card v-show="true" hover elevation-10 class="mb-3" v-for="(item, index) in datosConductorServicio" :key="index" > 
         <v-img
           class="white--text"
           height="230px"
@@ -17,7 +17,7 @@
                       <v-avatar>
                         <v-icon>time_to_leave</v-icon>
                       </v-avatar>
-                        <h3>{{item.origen }} {{index}} - {{item.destino}}</h3>
+                        <h3>{{item.origen }}  - {{item.destino}}</h3>
                     </v-chip>
                     <v-spacer></v-spacer>
                     <v-btn slot="activator" color="gray" icon><v-icon elevation-10>close</v-icon></v-btn>
