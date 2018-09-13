@@ -6,6 +6,6 @@
         <router-view></router-view>  
       </main>
       
-    <app-footer></app-footer>
+    <!--<app-footer></app-footer>-->
   </v-app>
 </template>

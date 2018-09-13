@@ -2,18 +2,33 @@
     <v-container>
         <v-layout >
             <v-flex xs12 md10 offset-ms1 offset-md1 elevation-10 lg10 offset-lg1>
+                <!-- Vcard Principal registro Usuario -->
                 <v-card>
-                    <v-card-title>Registro de Usuario</v-card-title>
+                    <v-layout class="mx-2 mt-2">
+                        <v-flex>
+                        <!-- Vcards Informacion de Registro -->
+                            <v-card class="mr-1">
+                                <v-card-text primary-title>
+                                <div class="text-xs-center">
+                                    <h3 class="headline mb-0 font-weight-medium font-italic">Registro Kangaroo Valley Safari</h3>
+                                    <div>Located two hours south of Sydney in the Southern Highlands of New South Wales, ...</div>
+                                </div>
+                                </v-card-text>
+                            </v-card>
+                        </v-flex> 
+                        <!-- /Vcards Informacion de Registro -->
+                    </v-layout>
                     <v-container>
                         <v-layout>
                             <v-flex >
-                                <v-card>
+                                <!-- Vcard bottomNav -->
+                                <v-card flat>
                                     <v-bottom-nav
+                                    class="mb-2"
                                     height="70px"
                                     :active.sync="bottomNav"
                                     :color="color"
-                                    :value="true"
-                                    >
+                                    :value="true">
                                     <v-btn dark>
                                         <span><h3>Viajar</h3></span>
                                         <v-icon large>directions_walk</v-icon>
@@ -24,55 +39,79 @@
                                         <v-icon large>time_to_leave</v-icon>
                                     </v-btn>
                                     </v-bottom-nav>
+                                    <v-divider></v-divider>
+                                    <v-btn block color="blue darken-4" dark height="20px">
+                                            <facebook-box class="mt-1 mr-1"></facebook-box> Conecta con Facebook
+                                    </v-btn>
+
+                                    <v-btn block color="red darken-4" dark height="20px">
+                                            <gmail-box class="mt-1 mr-1"></gmail-box> Conecta con Gmail</v-btn>
+                                    <br>
+                                    
+                                    <v-layout>
+                                        <v-flex class="pt-1">
+                                            <v-divider></v-divider>
+                                        </v-flex>
+
+                                        <v-flex>
+                                            <p class="text-xs-center font-weight-regular font-italic"> O registrate con tu correo electrónico</p>                                        </v-flex>
+                                        
+                                        <v-flex>
+                                            <v-divider></v-divider>
+                                        </v-flex>
+                                    </v-layout>
                                 </v-card>
+                                <!-- Vcard bottomNav -->
                             <v-form  ref="form" v-model="valid" lazy-validation>
                                 <v-text-field
-                                v-model="name"
-                                :rules="nameRules"
-                                :counter="10"
-                                label="Name"
-                                required
-                                ></v-text-field>
+                                    v-model="name"
+                                    :rules="nameRules"
+                                    :counter="10"
+                                    label="Name"
+                                    required>
+                                </v-text-field>
                                 <v-text-field
-                                v-model="email"
-                                :rules="emailRules"
-                                label="E-mail"
-                                required
-                                ></v-text-field>
+                                    v-model="email"
+                                    :rules="emailRules"
+                                    label="E-mail"
+                                    required>
+                                </v-text-field>
                                 <v-text-field
 									name="password"
 									label="Password"
 									id="password"
 									v-model="password"
 									type="password"
-									required
-								></v-text-field>
+									required>
+                                </v-text-field>
                                 <v-text-field
 									name="confirmPassword"
 									label="Confirm Password"
 									id="confirmPassword"
 									v-model="confirmPassword"
 									type="password"
-									:rules="[comparePasswords]"
-								></v-text-field>
+									:rules="[comparePasswords]">
+                                </v-text-field>
                                 <v-checkbox
-                                v-model="checkbox"
-                                :rules="[v => !!v || 'You must agree to continue!']"
-                                label="Do you agree?"
-                                required
-                                ></v-checkbox>
-
+                                    v-model="checkbox"
+                                    :rules="[v => !!v || 'You must agree to continue!']"
+                                    label="Do you agree the terms?"
+                                    required>
+                                </v-checkbox>
+                                
                                 <v-btn
                                 :disabled="!valid"
                                 @click="submit"
+                                block
+                                color="primary"
                                 >
                                 submit
                                 </v-btn>
-                                <v-btn @click="clear">clear</v-btn>
                             </v-form>
                         </v-flex>
                     </v-layout>
                 </v-container>
+                <!-- /Vcard Registro Principal usuario-->
                 </v-card>
             </v-flex>
         </v-layout>
@@ -93,7 +132,7 @@
         ],
         email: '',
         password: '',
-	    confirmPassword: '',
+        confirmPassword: '',
         emailRules: [
             v => !!v || 'E-mail is required',
             v => /.+@.+/.test(v) || 'E-mail must be valid'
@@ -111,9 +150,6 @@
     methods: {
       submit () {
         
-      },
-      clear () {
-        this.$refs.form.reset()
       }
     },
     computed: {
@@ -122,8 +158,8 @@
             },
         color () {
             switch (this.bottomNav) {
-            case 0: return 'indigo'
-            case 1: return 'teal'
+            case 0: return 'teal'
+            case 1: return 'indigo'
             }
       }
     },

@@ -71,41 +71,13 @@
       </template>
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-xs-only">
-        <v-menu offset-y open-on-hover>
-          <v-btn flat slot="activator">
+          <v-btn flat to="/registroUsuario">
             <v-icon left>perm_identity</v-icon> Registrate
           </v-btn>
-          <v-list > 
-            <v-list-tile @click="algo()" to="/registroUsuario">
-              <v-btn icon ><v-icon >directions_walk</v-icon></v-btn>
-            <v-list-tile-title>Como Usuario</v-list-tile-title>
-          </v-list-tile>
-        </v-list>
-        <v-list>
-            <v-list-tile @click="algo()" to="/registroConductor">
-              <v-btn icon><v-icon>drive_eta</v-icon></v-btn>
-            <v-list-tile-title>Como Conductor</v-list-tile-title>
-          </v-list-tile>
-        </v-list>
-      </v-menu>
-      <v-menu offset-y open-on-hover>
-        <v-btn flat slot="activator">
+        <v-btn flat to="/inicioUsuario">
           <v-icon left>how_to_reg</v-icon>
           Ingresa
         </v-btn>
-        <v-list > 
-            <v-list-tile @click="algo()" to="/inicioUsuario">
-              <v-btn icon><v-icon>directions_walk</v-icon></v-btn>
-            <v-list-tile-title>Como Usuario</v-list-tile-title>
-          </v-list-tile>
-        </v-list>
-        <v-list>
-            <v-list-tile @click="algo()" to="/inicioConductor">
-              <v-btn icon><v-icon>drive_eta</v-icon></v-btn>
-            <v-list-tile-title>Como Conductor</v-list-tile-title>
-          </v-list-tile>
-        </v-list>
-      </v-menu>
         
       </v-toolbar-items>
     </v-toolbar>

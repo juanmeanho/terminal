@@ -7,6 +7,12 @@ import AppToolbar from './components/uiElements/Toolbar.vue'
 import AppFooter from './components/uiElements/Footer.vue'
 import CardServicio from './components/servicio/CardServicio.vue'
 
+import MenuIcon from "vue-material-design-icons/Facebook.vue"
+import Gmail from "vue-material-design-icons/Gmail.vue"
+ 
+Vue.component("facebook-box", MenuIcon)
+Vue.component("gmail-box", Gmail)
+
 
 Vue.config.productionTip = false
 

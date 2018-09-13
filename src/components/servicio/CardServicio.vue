@@ -20,7 +20,7 @@
                         <h3>{{item.origen }}  - {{item.destino}}</h3>
                     </v-chip>
                     <v-spacer></v-spacer>
-                    <v-btn slot="activator" color="gray" icon><v-icon elevation-10>close</v-icon></v-btn>
+                    <v-btn slot="activator" @click="eliminarCard(index)" color="gray" icon><v-icon elevation-10>close</v-icon></v-btn>
                   </v-layout>
                   <v-chip label color="indigo" text-color="white">
                     <v-avatar>
