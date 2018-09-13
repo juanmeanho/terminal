@@ -1,7 +1,7 @@
 <template>
     <v-container>
         <v-layout >
-            <v-flex xs12 md10 offset-ms1 elevation-10 lg10 offset-lg1>
+            <v-flex xs12 md10 offset-ms1 offset-md1 elevation-10 lg10 offset-lg1>
                 <v-card>
                     <v-card-title>Registro de Usuario</v-card-title>
                     <v-container>
@@ -13,17 +13,15 @@
                                     :active.sync="bottomNav"
                                     :color="color"
                                     :value="true"
-                                    
-                                    shift
                                     >
                                     <v-btn dark>
-                                        <span>Viajar</span>
-                                        <v-icon>directions_walk</v-icon>
+                                        <span><h3>Viajar</h3></span>
+                                        <v-icon large>directions_walk</v-icon>
                                     </v-btn>
 
                                     <v-btn dark>
-                                        <span>Conducir</span>
-                                        <v-icon>time_to_leave</v-icon>
+                                        <span><h3>Conducir</h3></span>
+                                        <v-icon large>time_to_leave</v-icon>
                                     </v-btn>
                                     </v-bottom-nav>
                                 </v-card>
