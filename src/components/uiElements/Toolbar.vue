@@ -32,7 +32,8 @@
       <v-toolbar-title>
         <router-link 
         to="/" 
-        style="cursor: pointer; text-decoration: none; color: white;">
+        style="cursor: pointer; text-decoration: none; color: white;" 
+        class="flex headline font-weight-light font-italic mr-1">
           WebTerminal
        </router-link>
       </v-toolbar-title>
@@ -71,7 +72,7 @@
       </template>
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-xs-only">
-          <v-btn flat to="/registroUsuario">
+          <v-btn flat to="/registroUsuario" >
             <v-icon left>perm_identity</v-icon> Registrate
           </v-btn>
         <v-btn flat to="/inicioUsuario">
