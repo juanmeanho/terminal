@@ -1,5 +1,5 @@
 <template>
-<v-container>
+<v-container >
   <v-layout>
     <v-flex xs12 sm10 lg8 offset-sm1 offset-lg2 >
       <!-- VCard Principal-->
@@ -348,7 +348,7 @@
           <!-- /VExpansionPanel -->
         </v-layout>
         <!--/-->
-        <v-container class="hidden-sm-and-up">
+        <v-container   class="hidden-sm-and-up">
           <v-layout >
               <v-flex>
                 <!-- VCard Preview Datos Conductor SM Devices-->
