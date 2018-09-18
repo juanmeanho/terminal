@@ -11,7 +11,7 @@
                                 <v-card-text primary-title>
                                 <div class="text-xs-center">
                                     <h3 class="headline mb-0 font-weight-medium font-italic">Registro Kangaroo Valley Safari</h3>
-                                    <div>{{ $v }}Located two hours south of Sydney in the Southern Highlands of New South Wales, ...</div>
+                                    <div>{{ $data }}Located two hours south of Sydney in the Southern Highlands of New South Wales, ...</div>
                                 </div>
                                 </v-card-text>
                             </v-card>
@@ -25,21 +25,22 @@
                                 <!-- Vcard bottomNav -->
                                 <v-card flat>
                                     <v-bottom-nav
-                                    class="mb-2"
-                                    height="70px"
-                                    :active.sync="bottomNav"
-                                    :color="color"
-                                    :value="true">
-                                    <v-btn dark>
-                                        <span v-show="false"><h3>Viajar</h3></span>
-                                        <v-icon large>directions_walk</v-icon>
-                                    </v-btn>
+                                        class="mb-2"
+                                        height="70px"
+                                        :active.sync="bottomNav"
+                                        :color="color"
+                                        :value="true">
+                                            <v-btn dark>
+                                                <span v-show="false"><h3>Viajar</h3></span>
+                                                <v-icon large>directions_walk</v-icon>
+                                            </v-btn>
 
-                                    <v-btn dark>
-                                        <span v-show="false"><h3>Conducir</h3></span>
-                                        <v-icon large>time_to_leave</v-icon>
-                                    </v-btn>
+                                            <v-btn dark>
+                                                <span v-show="false"><h3>Conducir</h3></span>
+                                                <v-icon large>time_to_leave</v-icon>
+                                            </v-btn>
                                     </v-bottom-nav>
+
                                     <v-divider></v-divider>
                                     <v-btn v-show="false" block color="blue darken-4" dark height="20px">
                                             <facebook-box class="mt-1 mr-1"></facebook-box> Conecta con Facebook
@@ -105,7 +106,7 @@
                                         required>
                                     </v-autocomplete>
                                 </v-layout>
-                                <v-layout>
+                                <v-layout wrap>
                                     <v-text-field
                                         v-model="email"
                                         :error-messages="emailErrors"
@@ -139,16 +140,8 @@
                                         required>
                                     </v-text-field>
                                 </v-layout>
-                                <v-checkbox
-                                    v-model="terminos"
-                                    name="terminos"
-                                    :rules="[v => !!v || 'You must agree to continue!']"
-                                    :error-messages="terminosErrors"
-                                    @input="$v.terminos.$touch()"
-                                    @blur="$v.terminos.$touch()"
-                                    label="Do you agree the terms?"
-                                    required>
-                                </v-checkbox>
+                                <p>He leído los terminos
+                                </p>
                                 
                                 <v-btn
                                 :disabled="submitStatus === 'PENDING'"
@@ -228,9 +221,7 @@
             minLength: minLength(8),
             required
         },
-        terminos: {
-            required
-        }
+
     },
     methods: {
         submit() {
@@ -239,12 +230,15 @@
                         cedula: this.cedula,
                         name: this. name, 
                         lastname: this.lastname,
-                        password: this.password})        
+                        password: this.password,
+                        tipoUsuario: this.bottomNav})   
+
             this.$v.$touch()
             if (this.$v.$invalid) {
                 this.submitStatus = 'ERROR'
             } else {
-                // do your submit logic here
+                this.$store.dispatch('signUserUp', {email: this.email, password: this.password})
+
                 this.submitStatus = 'PENDING'
                 setTimeout(() => {
                 this.submitStatus = 'OK'
@@ -318,12 +312,6 @@
             !this.$v.confirmPassword.matchText && errors.push('Passwords no coinciden')
         return errors
       },
-      terminosErrors () {
-        const errors = []
-        if (!this.$v.terminos.$dirty) return errors
-            !this.$v.terminos.required && errors.push('Debe aceptar los terminos')
-        return errors
-      }
     },
     watch: {
       search (val) {
