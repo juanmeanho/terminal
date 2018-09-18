@@ -33,13 +33,13 @@ new Vue({
   validations: {},
   store,
   created(){
-  	firebase.initializeApp({
-  		apiKey: "AIzaSyCVFC8kpOp9ttXEnNqRVhSGO9VgQwRKmqs",
-	    authDomain: "terminal-80132.firebaseapp.com",
-	    databaseURL: "https://terminal-80132.firebaseio.com",
-	    projectId: "terminal-80132",
-	    storageBucket: "terminal-80132.appspot.com",
-	    messagingSenderId: "784426739789"
-  	})
+    firebase.initializeApp({
+      apiKey: "AIzaSyCVFC8kpOp9ttXEnNqRVhSGO9VgQwRKmqs",
+      authDomain: "terminal-80132.firebaseapp.com",
+      databaseURL: "https://terminal-80132.firebaseio.com",
+      projectId: "terminal-80132",
+      storageBucket: "terminal-80132.appspot.com",
+      messagingSenderId: "784426739789"
+    })
   }
 }).$mount('#app')

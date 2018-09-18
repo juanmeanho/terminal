@@ -10,7 +10,7 @@ export const store = new Vuex.Store({
 		serviciosTodos: [
           { imageUrl: "https://img.clasf.co.ve/2017/02/13/Ford-Fiesta-Move-20170213085925.jpg",
             origen: 'Miami',
-            destino: 'Bóston',
+            destino: 'Bóstoooon',
             fechaSalida: '22/10/2018',
             horaSalida: '10:00 am',
             asientosDisponibles: 3,
@@ -66,9 +66,7 @@ export const store = new Vuex.Store({
             numComentarios: 0,
             serviciosRealizados: 1 },
         ],
-        user:{
-        	id: 'asdfseafs'
-        }
+        user: null
 	},
 	mutations: {
 		setUser(state, payload){
@@ -77,8 +75,10 @@ export const store = new Vuex.Store({
 	},
 	actions: {
 		signUserUp({commit}, payload) {
-			firebase.auth().createUserWithEmailAndPassword(payload.email, payload.password)
+      firebase.auth()
+      .createUserWithEmailAndPassword(payload.email, payload.password)
 			.then(
+        //console.log('Usuario Creado')
 				user => {
 					const newUser = {
 						id: user.uid,
@@ -90,7 +90,27 @@ export const store = new Vuex.Store({
 					console.log(error)
 				}
 			)
-		}
+    },
+    signUserIn({commit}, payload){
+      firebase.auth()
+      .signInWithEmailAndPassword(payload.email, payload.password)
+        .then(
+          user => {
+            const newUser = {
+              id: user.uid,
+            }
+            commit('setUser', newUser)
+          }
+        ).catch(
+          error => {
+            console.log(error)
+          }
+        )
+    },
+    logout({commit}){
+      firebase.auth().signOut()
+      commit('setUser', null)
+    }
 	},
 	getters: {
 		serviciosTodos(state){
@@ -104,6 +124,9 @@ export const store = new Vuex.Store({
 					return servicio.id === servicioId
 				})
 			}
-		}
+    },
+    user(state){
+      return state.user
+    }
 	}
 })

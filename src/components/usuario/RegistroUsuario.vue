@@ -11,7 +11,7 @@
                                 <v-card-text primary-title>
                                 <div class="text-xs-center">
                                     <h3 class="headline mb-0 font-weight-medium font-italic">Registro Kangaroo Valley Safari</h3>
-                                    <div>{{ $data }}Located two hours south of Sydney in the Southern Highlands of New South Wales, ...</div>
+                                    <div>Located two hours south of Sydney in the Southern Highlands of New South Wales, ...</div>
                                 </div>
                                 </v-card-text>
                             </v-card>
@@ -21,7 +21,7 @@
                     <v-container>
                         <v-layout>
                             <v-flex >
-                            <v-form @submit.prevent="submit" lazy-validation>
+                            <v-form @submit.prevent="onSignUp" lazy-validation>
                                 <!-- Vcard bottomNav -->
                                 <v-card flat>
                                     <v-bottom-nav
@@ -40,28 +40,6 @@
                                                 <v-icon large>time_to_leave</v-icon>
                                             </v-btn>
                                     </v-bottom-nav>
-
-                                    <v-divider></v-divider>
-                                    <v-btn v-show="false" block color="blue darken-4" dark height="20px">
-                                            <facebook-box class="mt-1 mr-1"></facebook-box> Conecta con Facebook
-                                    </v-btn>
-
-                                    <v-btn v-show="false" block color="red darken-4" dark height="20px">
-                                            <gmail-box class="mt-1 mr-1"></gmail-box> Conecta con Gmail</v-btn>
-                                    <br>
-                                    
-                                    <v-layout>
-                                        <v-flex class="pt-1">
-                                            <v-divider></v-divider>
-                                        </v-flex>
-
-                                        <v-flex>
-                                            <p class="text-xs-center font-weight-regular font-italic">Registrate con tu correo electrónico</p>                                        </v-flex>
-                                        
-                                        <v-flex>
-                                            <v-divider></v-divider>
-                                        </v-flex>
-                                    </v-layout>
                                 </v-card>
                                 <!-- Vcard bottomNav -->
                                 <v-layout wrap>
@@ -149,7 +127,7 @@
                                 block
                                 color="primary"
                                 >
-                                submit
+                                Crear Cuenta
                                 </v-btn>
                                 <p class="typo__p" v-if="submitStatus === 'OK'">Thanks for your submission!</p>
                                 <p class="typo__p" v-if="submitStatus === 'ERROR'">Please fill the form correctly.</p>
@@ -166,11 +144,9 @@
 </template>
 
 <script>
-    import { validationMixin } from 'vuelidate'
     import { required, minLength, maxLength, numeric, email, sameAs } from 'vuelidate/lib/validators';
 
   export default {
-    mixins: [validationMixin],
     data: () => ({
         states: [
             'Maturin',
@@ -188,7 +164,6 @@
         email: '',
         password: '',
         confirmPassword: '',
-        checkbox: false
         }),
     validations: {
         name: {
@@ -224,7 +199,7 @@
 
     },
     methods: {
-        submit() {
+        onSignUp() {
             console.log({email: this.email,
                         ciudad:this.ciudadOrigen,
                         cedula: this.cedula,
@@ -262,7 +237,7 @@
                 case 0: return 'teal'
                 case 1: return 'indigo'
             }
-      },
+      },//validaciones del formulario
       nameErrors () {
         const errors = []
         if (!this.$v.name.$dirty) return errors
@@ -312,10 +287,17 @@
             !this.$v.confirmPassword.matchText && errors.push('Passwords no coinciden')
         return errors
       },
+      user(){
+          return this.$store.getters.user
+      }
     },
     watch: {
       search (val) {
         val && val !== this.itemsSelect && this.querySelections(val)
+      },//redirigir despues de crerado el usuario
+      user(value){
+          if(value !== null && value !== undefined)
+            this.$router.push('/')
       }
     },
   }

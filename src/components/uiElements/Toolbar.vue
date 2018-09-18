@@ -4,20 +4,21 @@
     <v-navigation-drawer fixed
          temporary v-model="sideNav">
        <v-list>
-        <v-list-tile >
-          <v-list-tile-action>
-           <v-icon>face</v-icon>
+        <v-list-tile v-for="(item, index) in menuItems" :key="index" :to="item.link">
+          <v-list-tile-action >
+           <v-icon>{{item.icon}}</v-icon>
          </v-list-tile-action>
          <v-list-tile-content>
-           Crea tu cuenta
+           {{item.title}}
          </v-list-tile-content>
         </v-list-tile>
-        <v-list-tile>
-          <v-list-tile-action>
-           <v-icon>lock_open</v-icon>
+        <v-divider></v-divider>
+        <v-list-tile v-if="userIsAuthenticated" @click="onLogout">
+          <v-list-tile-action >
+           <v-icon>exit_to_app</v-icon>
          </v-list-tile-action>
          <v-list-tile-content>
-           Ingresa
+           Salir
          </v-list-tile-content>
         </v-list-tile>
        </v-list> 
@@ -42,8 +43,8 @@
         <v-autocomplete
             :loading="loading"
             :items="items"
-            :search-input.sync="search"
-            v-model="select"
+            :search-input.sync="searchOrigen"
+            v-model="selectOrigen"
             cache-items
             class="mx-3 hidden-sm-and-down"
             clearable
@@ -56,74 +57,71 @@
         </v-autocomplete>
         <v-icon class="hidden-sm-and-down">arrow_forward</v-icon>
         <v-autocomplete
-                :loading="loading"
-                :items="items"
-                :search-input.sync="search"
-                v-model="select"
-                cache-items
-                class="mx-3 hidden-sm-and-down"
-                flat
-                hide-no-data
-                hide-details
-                label="Seleccione el Destino"
-                solo-inverted
-                prepend-inner-icon="place">
+            :loading="loading"
+            :items="items"
+            :search-input.sync="searchDestino"
+            v-model="selectDestino"
+            cache-items
+            class="mx-3 hidden-sm-and-down"
+            flat
+            hide-no-data
+            hide-details
+            label="Seleccione el Destino"
+            solo-inverted
+            prepend-inner-icon="place">
         </v-autocomplete>
       </template>
       <v-spacer></v-spacer>
-      <v-toolbar-items class="hidden-xs-only">
-          <v-btn flat to="/registroUsuario" >
-            <v-icon left>perm_identity</v-icon> Registrate
+      <v-toolbar-items  class="hidden-xs-only">
+          <v-btn v-for="(item, index) in menuItems" :key="index" flat :to="item.link" >
+            <v-icon left>{{item.icon}}</v-icon> {{item.title}}
           </v-btn>
-        <v-btn flat to="/inicioUsuario">
-          <v-icon left>how_to_reg</v-icon>
-          Ingresa
-        </v-btn>
-        
+
+          <v-btn v-if="userIsAuthenticated" flat @click="onLogout">
+            <v-icon >exit_to_app</v-icon>
+          </v-btn>
       </v-toolbar-items>
     </v-toolbar>
     <!-- VToolbar Principal -->
     <!-- Mini ToolBar para cuadros de busqueda en Sm devices -->
       <v-toolbar  color="transparent" height="180%" class="hidden-md-and-up" card prominent >
-          <v-card width="100%" class="mt-5 hidden-md-and-up" dark color="blue darken-1" >
-              <v-layout class="mb-1" >
-                <v-autocomplete
-                    :loading="loading"
-                    :items="items"
-                    :search-input.sync="search"
-                    v-model="select"
-                    cache-items
-                    class="mx-2 pt-2 "
-                    clearable
-                    flat
-                    hide-no-data
-                    hide-details
-                    label="Seleccione el Origen"
-                    solo-inverted
-                    prepend-inner-icon="add_location">
-                </v-autocomplete>
-              </v-layout>
-              <v-divider></v-divider>
-              <v-layout class="mt-1">
-                
-                  <v-autocomplete 
-                          :loading="loading"
-                          :items="items"
-                          :search-input.sync="search"
-                          v-model="select"
-                          cache-items
-                          class="mx-2 pb-2"
-                          flat
-                          hide-no-data
-                          hide-details
-                          label="Seleccione el Destino"
-                          solo-inverted
-                          prepend-inner-icon="place">
-                  </v-autocomplete>
-                
-              </v-layout>
-          </v-card>
-          </v-toolbar>
+        <v-card width="100%" class="mt-5 hidden-md-and-up" dark color="blue darken-1" >
+          <v-layout class="mb-1" >
+            <v-autocomplete
+              :loading="loading"
+              :items="items"
+              :search-input.sync="searchOrigen"
+              v-model="selectOrigen"
+              cache-items
+              class="mx-2 pt-2 "
+              clearable
+              flat
+              hide-no-data
+              hide-details
+              label="Seleccione el Origen"
+              solo-inverted
+              prepend-inner-icon="add_location">
+            </v-autocomplete>
+          </v-layout>
+          <v-divider></v-divider>
+          <v-layout class="mt-1">
+            <v-autocomplete 
+              :loading="loading"
+              :items="items"
+              :search-input.sync="searchDestino"
+              v-model="selectDestino"
+              cache-items
+              class="mx-2 pb-2"
+              flat
+              hide-no-data
+              hide-details
+              label="Seleccione el Destino"
+              solo-inverted
+              prepend-inner-icon="place">
+            </v-autocomplete>
+          </v-layout>
+        </v-card>
+      </v-toolbar>
         <!-- /Mini ToolBar para cuadros de busqueda en Sm devices -->
   </div>
 </template>
@@ -136,74 +134,45 @@
         sideNav: false,
         loading: false,
         items: [],
-        search: null,
-        select: null,
+        searchOrigen: null,
+        searchDestino: null,
+        selectOrigen: null,
+        selectDestino: null,
         states: [
-          'Alabama',
-          'Alaska',
-          'American Samoa',
-          'Arizona',
-          'Arkansas',
-          'California',
-          'Colorado',
-          'Connecticut',
-          'Delaware',
-          'District of Columbia',
-          'Federated States of Micronesia',
-          'Florida',
-          'Georgia',
-          'Guam',
-          'Hawaii',
-          'Idaho',
-          'Illinois',
-          'Indiana',
-          'Iowa',
-          'Kansas',
-          'Kentucky',
-          'Louisiana',
-          'Maine',
-          'Marshall Islands',
-          'Maryland',
-          'Massachusetts',
-          'Michigan',
-          'Minnesota',
-          'Mississippi',
-          'Missouri',
-          'Montana',
-          'Nebraska',
-          'Nevada',
-          'New Hampshire',
-          'New Jersey',
-          'New Mexico',
-          'New York',
-          'North Carolina',
-          'North Dakota',
-          'Northern Mariana Islands',
-          'Ohio',
-          'Oklahoma',
-          'Oregon',
-          'Palau',
-          'Pennsylvania',
-          'Puerto Rico',
-          'Rhode Island',
-          'South Carolina',
-          'South Dakota',
-          'Tennessee',
-          'Texas',
-          'Utah',
-          'Vermont',
-          'Virgin Island',
-          'Virginia',
-          'Washington',
-          'West Virginia',
-          'Wisconsin',
-          'Wyoming'
+          'Maturin',
+          'Barcelona',
+          'Puerto La Cruz',
+          'Puerto Ordaz',
+          'Ciudad Bolivar',
+        ],
+      }
+    },
+    computed:{
+      menuItems(){
+        let menuItems = [
+          { icon: 'perm_identity', title: 'Registrate', link: '/registroUsuario'},
+          { icon: 'how_to_reg', title: 'Ingresa', link: '/inicioUsuario'}
         ]
+
+        if(this.userIsAuthenticated){
+          menuItems = [
+            { icon: 'perm_identity', title: 'Perfil', link: '/perfil'},
+            { icon: 'perm_identity', title: 'Dashboard', link: '/dashboard'},
+          ]
+        }
+        return menuItems
+      },
+      userIsAuthenticated(){
+        return this.$store.getters.user !== null &&
+                this.$store.getters.user !== undefined
       }
     },
     watch: {
-      search (val) {
-        val && val !== this.select && this.querySelections(val)
+      searchOrigen (val) {
+        val && val !== this.selectOrigen && this.querySelections(val)
+      },
+      searchDestino (val) {
+        val && val !== this.selectDestino && this.querySelections(val)
       }
     },
     methods: {
@@ -216,6 +185,9 @@
           })
           this.loading = false
         }, 500)
+      },
+      onLogout(){
+        this.$store.dispatch('logout')
       }
     }
   };
