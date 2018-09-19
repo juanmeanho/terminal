@@ -26,7 +26,7 @@
     <!-- /VnavigationDrawer -->
     <!-- VToolbar Principal -->
     <v-toolbar height="50%" dark color="blue darken-1" fixed >
-      <v-toolbar-side-icon class="hidden-sm-and-up"
+      <v-toolbar-side-icon class="hidden-lg-and-up"
       @click.stop="sideNav = !sideNav"
       >
      </v-toolbar-side-icon>
@@ -72,14 +72,35 @@
         </v-autocomplete>
       </template>
       <v-spacer></v-spacer>
-      <v-toolbar-items  class="hidden-xs-only">
-          <v-btn v-for="(item, index) in menuItems" :key="index" flat :to="item.link" >
+      <v-toolbar-items  class="hidden-md-and-down">
+          <v-btn v-if="!userIsAuthenticated" v-for="(item, index) in menuItems" :key="index" flat :to="item.link" >
             <v-icon left>{{item.icon}}</v-icon> {{item.title}}
           </v-btn>
 
-          <v-btn v-if="userIsAuthenticated" flat @click="onLogout">
-            <v-icon >exit_to_app</v-icon>
-          </v-btn>
+          <v-menu offset-y v-if="userIsAuthenticated" >
+            <v-btn
+              slot="activator"
+              flat>
+              <v-icon left>perm_identity</v-icon>
+                Usuario
+              <v-icon >arrow_drop_down</v-icon>
+            </v-btn>
+
+            <v-list>
+              <v-list-tile
+                v-for="(item, index) in menuItems"
+                :key="index"
+                :to="item.link">
+                <v-icon>{{item.icon}}</v-icon>
+                <v-list-tile-title>&nbsp;&nbsp;{{ item.title }}</v-list-tile-title>
+              </v-list-tile>
+              <v-divider></v-divider>
+              <v-list-tile v-if="userIsAuthenticated" @click="onLogout">
+                <v-icon left>exit_to_app</v-icon>&nbsp;&nbsp;Salir
+              </v-list-tile>
+            </v-list>
+          </v-menu>
+
       </v-toolbar-items>
     </v-toolbar>
     <!-- VToolbar Principal -->
@@ -145,6 +166,12 @@
           'Puerto Ordaz',
           'Ciudad Bolivar',
         ],
+        menuAuthenticated: [
+          { title: 'Click Me' },
+          { title: 'Click Me' },
+          { title: 'Click Me' },
+          { title: 'Click Me 2' }
+        ]
       }
     },
     computed:{
@@ -153,13 +180,11 @@
           { icon: 'perm_identity', title: 'Registrate', link: '/registroUsuario'},
           { icon: 'how_to_reg', title: 'Ingresa', link: '/inicioUsuario'}
         ]
-
-        if(this.userIsAuthenticated){
+        if(this.userIsAuthenticated)
           menuItems = [
             { icon: 'perm_identity', title: 'Perfil', link: '/perfil'},
-            { icon: 'perm_identity', title: 'Dashboard', link: '/dashboard'},
+            { icon: 'how_to_reg', title: 'Dashboard', link: '/dashboard'}
           ]
-        }
         return menuItems
       },
       userIsAuthenticated(){
