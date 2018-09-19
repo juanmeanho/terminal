@@ -49,6 +49,7 @@
                     </v-avatar>
                       <h3>{{item.tarifa}} BsS</h3>
                   </v-chip>
+                  
                 </v-card>
                 <!-- /Vcard Transparente-->
               </v-flex>

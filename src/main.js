@@ -6,7 +6,7 @@ import * as firebase from 'firebase'
 import router from './router'
 import Vuelidate from 'vuelidate'
 import {store} from './store'
-
+ 
 
 import AppToolbar from './components/uiElements/Toolbar.vue'
 import AppFooter from './components/uiElements/Footer.vue'
@@ -16,8 +16,8 @@ import MenuIcon from "vue-material-design-icons/Facebook.vue"
 import Gmail from "vue-material-design-icons/Gmail.vue"
 
 Vue.use(Vuelidate)
-Vue.component("facebook-box", MenuIcon)
-Vue.component("gmail-box", Gmail)
+Vue.component('facebook-box', MenuIcon)
+Vue.component('gmail-box', Gmail)
 
 
 Vue.config.productionTip = false
