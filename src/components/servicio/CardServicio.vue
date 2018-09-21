@@ -3,7 +3,7 @@
   <v-layout>
     <v-flex xs12 sm10 lg8 offset-sm1 offset-lg2 >
       <!-- VCard Principal-->
-      <v-card v-show="true" hover elevation-10 class="mb-3" v-for="(item, index) in datosConductorServicio" :key="index" > 
+      <v-card v-show="true" hover elevation-10 :class="mtCardServicio" v-for="(item, index) in datosConductorServicio" :key="index" > 
         <v-img
           class="white--text"
           height="230px"
@@ -623,7 +623,16 @@
     computed: {
       datosConductorServicio(){
         return this.$store.getters.serviciosTodos
-      }
+      },
+      mtCardServicio () {
+        switch (this.$vuetify.breakpoint.name) {
+          case 'xs': return 'mb-3 mt-0'
+          case 'sm': return 'mb-3 mt-0'
+          case 'md': return 'mb-3 mt-5'
+          case 'lg': return 'mb-3 mt-5'
+          case 'xl': return 'mb-3 mt-5'
+        }
+      },
     }
   };
 </script>

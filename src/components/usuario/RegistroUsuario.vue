@@ -1,6 +1,6 @@
 <template>
     <v-container>
-        <v-layout >
+        <v-layout :class="mtRegistroUsuario">
             <v-flex xs12 md10 offset-ms1 offset-md1 elevation-10 lg10 offset-lg1>
                 <!-- Vcard Principal registro Usuario -->
                 <v-card>
@@ -31,12 +31,12 @@
                                         :color="color"
                                         :value="true">
                                             <v-btn dark>
-                                                <span v-show="false"><h3>Viajar</h3></span>
+                                                <span v-show="true"><h3>Viajar</h3></span>
                                                 <v-icon large>directions_walk</v-icon>
                                             </v-btn>
 
                                             <v-btn dark>
-                                                <span v-show="false"><h3>Conducir</h3></span>
+                                                <span v-show="true"><h3>Conducir</h3></span>
                                                 <v-icon large>time_to_leave</v-icon>
                                             </v-btn>
                                     </v-bottom-nav>
@@ -232,6 +232,15 @@
       }
     },
     computed: {
+        mtRegistroUsuario () {
+            switch (this.$vuetify.breakpoint.name) {
+              case 'xs': return 'mt-0'
+              case 'sm': return 'mt-0'
+              case 'md': return 'mt-5'
+              case 'lg': return 'mt-5'
+              case 'xl': return 'mt-5'
+            }
+        },
         color () {
             switch (this.bottomNav) {
                 case 0: return 'teal'

@@ -1,6 +1,6 @@
 <template>
     <v-container>
-        <v-layout >
+        <v-layout :class="mtInicioUsuario">
             <v-flex xs12 md10 offset-ms1 offset-md1 elevation-10 lg10 offset-lg1>
                 <!-- Vcard Principal registro Usuario -->
                 <v-card>
@@ -133,6 +133,15 @@
       }
     },
     computed: {
+        mtInicioUsuario () {
+            switch (this.$vuetify.breakpoint.name) {
+              case 'xs': return 'mt-0'
+              case 'sm': return 'mt-0'
+              case 'md': return 'mt-5'
+              case 'lg': return 'mt-5'
+              case 'xl': return 'mt-5'
+            }
+        },
         //validaciones del formulario
       emailErrors () {
         const errors = []
